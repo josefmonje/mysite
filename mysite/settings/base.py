@@ -17,7 +17,7 @@ PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 ALLOWED_HOSTS = [
-    os.environ.get('HOST_IP', None)
+    os.environ['HOST_IP'],
 ]
 
 
