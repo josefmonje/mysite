@@ -12,12 +12,19 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from future.standard_library import install_aliases
+
+install_aliases()
+from urllib.request import urlopen
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
+ipv4_api = 'http://instance-data/latest/meta-data/public-ipv4'
+HOST_IP = urlopen(ipv4_api).read()
+
 ALLOWED_HOSTS = [
-    os.environ['HOST_IP'],
+    HOST_IP,
 ]
 
 
