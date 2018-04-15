@@ -3,7 +3,8 @@
 sudo supervisorctl stop mysite
 
 PWD=${HOME}/mysite
-/home/ubuntu/.local/bin/pipenv run ./manage.py migrate
-/home/ubuntu/.local/bin/pipenv run ./manage.py collectstatic --noinput
+pwd
+pipenv run ./manage.py migrate
+pipenv run ./manage.py collectstatic --noinput
 
 sudo supervisorctl start mysite
