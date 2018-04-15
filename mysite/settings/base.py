@@ -12,10 +12,13 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from future.standard_library import install_aliases
-
-install_aliases()
-from urllib.request import urlopen
+try:
+    from future.standard_library import install_aliases
+    install_aliases()
+except ImportError:
+    pass
+finally:
+    from urllib.request import urlopen
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
