@@ -1,9 +1,8 @@
 #!/bin/bash
 
-scripts/cronjobs.sh
-scripts/symlinks.sh
-
-source scripts/get_ip.sh
+PWD=${HOME}/mysite
+${PWD}/scripts/cronjobs.sh
+${PWD}/scripts/symlinks.sh
 
 sudo service nginx restart
 sudo service supervisor restart

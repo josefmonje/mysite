@@ -1,5 +1,6 @@
 #!/bin/bash
 
+PWD=${HOME}/mysite
 sudo ln -s $PWD/configs/supervisor.conf /etc/supervisor/conf.d/
 
 sudo ln -s $PWD/configs/nginx.conf /etc/nginx/sites-available/
