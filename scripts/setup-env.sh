@@ -3,7 +3,7 @@
 scripts/cronjobs.sh
 scripts/symlinks.sh
 
-pipenv install --three
+/home/ubuntu/.local/bin/pipenv install --three
 
 sudo service nginx restart
 sudo service supervisor restart
