@@ -1,6 +1,8 @@
 #!/bin/bash
 
-supervisorctl mysite stop
+supervisorctl stop mysite
+
 pipenv run ./manage.py migrate
 pipenv run ./manage.py collectstatic
-supervisorctl mysite start
+
+supervisorctl start mysite
