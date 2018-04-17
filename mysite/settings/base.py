@@ -27,9 +27,17 @@ ipv4_api = 'http://instance-data/latest/meta-data/public-ipv4'
 HOST_IP = urlopen(ipv4_api).read().decode()
 
 ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
     HOST_IP,
 ]
 
+try:
+    with open('/home/ubuntu/var/url.loadbalancer') as file:
+        data = file.read()
+        ALLOWED_HOSTS.append(data)
+except Exception:
+    pass
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
