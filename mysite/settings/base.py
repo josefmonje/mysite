@@ -34,7 +34,7 @@ ALLOWED_HOSTS = [
 
 try:
     with open('/home/ubuntu/var/url.loadbalancer') as file:
-        data = file.read()
+        data = file.read().strip()
         ALLOWED_HOSTS.append(data)
 except Exception:
     pass
