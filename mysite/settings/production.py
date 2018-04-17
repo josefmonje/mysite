@@ -4,8 +4,13 @@ import os
 
 DEBUG = False
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings.production")
-SECRET_KEY = os.environ.setdefault("SECRET_KEY", "am9zZWZtb25qZW15c2l0ZQo=")
+SECRET_KEY = os.environ['SECRET_KEY']
+
+with open('/home/ubuntu/var/url.loadbalancer') as file:
+    data = file.read().strip()
+    ALLOWED_HOSTS = [
+        data
+    ]
 
 try:
     from .local import *
