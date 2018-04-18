@@ -26,3 +26,7 @@ instanceId2=`cat var/id.instance2`
 instance2Url=`cat var/url.instance2`
 instanceId3=`cat var/id.instance3`
 instance3Url=`cat var/url.instance3`
+
+# SNS
+$snsArn1=`cat var/arn.status`
+$snsArn2=`cat var/arn.disk`
