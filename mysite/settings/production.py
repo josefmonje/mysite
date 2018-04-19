@@ -1,6 +1,6 @@
-from .base import *
-
 import os
+
+from .base import *
 
 ADMINS = [
     ('Josef', 'josefmonje@gmail.com'),
@@ -18,6 +18,18 @@ SERVER_EMAIL = EMAIL_HOST_USER
 SECRET_KEY = os.environ['SECRET_KEY']
 
 DEBUG = False
+
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+]
+
+try:
+    ipv4_api = 'http://instance-data/latest/meta-data/public-ipv4'
+    HOST_IP = urlopen(ipv4_api).read().decode()
+    ALLOWED_HOSTS.append(HOST_IP)
+except URLError:
+    pass
 
 with open('/home/ubuntu/var/url.loadbalancer') as file:
     loadbalancer = file.read().strip()
