@@ -1,5 +1,14 @@
 import os
 
+try:
+    from future.standard_library import install_aliases
+    install_aliases()
+except ImportError:
+    pass
+finally:
+    from urllib.request import urlopen
+    from urllib.error import URLError
+
 from .base import *
 
 ADMINS = [
