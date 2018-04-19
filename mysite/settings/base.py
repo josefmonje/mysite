@@ -19,18 +19,22 @@ except ImportError:
     pass
 finally:
     from urllib.request import urlopen
+    from urllib.error import URLError
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-ipv4_api = 'http://instance-data/latest/meta-data/public-ipv4'
-HOST_IP = urlopen(ipv4_api).read().decode()
-
 ALLOWED_HOSTS = [
-    '127.0.0.1',
     'localhost',
-    HOST_IP,
+    '127.0.0.1',
 ]
+
+try:
+    ipv4_api = 'http://instance-data/latest/meta-data/public-ipv4'
+    HOST_IP = urlopen(ipv4_api).read().decode()
+    ALLOWED_HOSTS.append(HOST_IP)
+except URLError:
+    pass
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
