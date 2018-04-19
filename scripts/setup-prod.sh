@@ -74,6 +74,9 @@ scp -i $keyFile -o StrictHostKeyChecking=no var/* ubuntu@$instance1Url:var/.
 scp -i $keyFile -o StrictHostKeyChecking=no var/* ubuntu@$instance2Url:var/.
 scp -i $keyFile -o StrictHostKeyChecking=no var/* ubuntu@$instance3Url:var/.
 
+scp -i $keyFile -o StrictHostKeyChecking=no .env ubuntu@$instance2Url:var/.
+scp -i $keyFile -o StrictHostKeyChecking=no .env ubuntu@$instance3Url:var/.
+
 echo "Done!"
 echo "You can now test Jenkins deployment after setting up the github webhook!"
 echo "IP addresses are: $prod1Ip and $prod2Ip"
