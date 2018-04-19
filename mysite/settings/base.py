@@ -36,10 +36,6 @@ try:
 except URLError:
     pass
 
-with open('/home/ubuntu/var/url.loadbalancer') as file:
-    loadbalancer = file.read().strip()
-    ALLOWED_HOSTS.append(loadbalancer)
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 

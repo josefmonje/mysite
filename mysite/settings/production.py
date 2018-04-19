@@ -19,6 +19,10 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 DEBUG = False
 
+with open('/home/ubuntu/var/url.loadbalancer') as file:
+    loadbalancer = file.read().strip()
+    ALLOWED_HOSTS.append(loadbalancer)
+
 try:
     from .local import *
 except ImportError:
