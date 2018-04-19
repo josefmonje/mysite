@@ -60,8 +60,8 @@ ssh -i $keyFile ubuntu@$instance1Url '
 echo "Done"
 
 echo "Adding to security groups"
-aws ec2 authorize-security-group-ingress --group-id $securityGroupId2 --protocol tcp --port 22 --cidr $devIp/32
 aws ec2 authorize-security-group-ingress --group-id $securityGroupId1 --protocol tcp --port 8080 --cidr $devIp/32
+aws ec2 authorize-security-group-ingress --group-id $securityGroupId2 --protocol tcp --port 22 --cidr $devIp/32
 
 echo "Sending variables..."
 scp -i $keyFile -o StrictHostKeyChecking=no var/* ubuntu@$instance1Url:var/.
@@ -69,6 +69,6 @@ scp -i $keyFile -o StrictHostKeyChecking=no var/* ubuntu@$instance1Url:var/.
 jenkinsPassword=`ssh -i $keyFile ubuntu@$instance1Url 'sudo cat /var/lib/jenkins/secrets/initialAdminPassword'`
 echo $jenkinsPassword > var/password.jenkins
 echo "Done!"
-echo "Please setup Jenkins!"
+echo "Please setup Jenkins while setting up prod servers!"
 echo "Visit: $instance1Url:8080"
 echo "Your Jenkins password is $jenkinsPassword"
