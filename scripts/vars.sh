@@ -28,5 +28,5 @@ instanceId3=`cat var/id.instance3`
 instance3Url=`cat var/url.instance3`
 
 # SNS
-$snsArn1=`cat var/arn.status`
-$snsArn2=`cat var/arn.disk`
+$snsArn1=`cat var/sns.status`
+$snsArn2=`cat var/sns.disk`
