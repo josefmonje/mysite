@@ -11,7 +11,7 @@ echo $instance2Url > var/url.instance2
 echo "Prod Server 1 ($instanceId2) at $instance2Url"
 
 echo "Adding Dev to authorized keys"
-echo $myPubKey | ssh -i $keyFile -o StrictHostKeyChecking=no ubuntu@$instance2Url 'cat >> ~/.ssh/authorized_keys'
+cat $myPubKey | ssh -i $keyFile -o StrictHostKeyChecking=no ubuntu@$instance2Url 'cat >> ~/.ssh/authorized_keys'
 
 echo "Adding Jenkins to authorized keys"
 echo $sshJenkins | ssh -i $keyFile -o StrictHostKeyChecking=no ubuntu@$instance2Url 'cat >> ~/.ssh/authorized_keys'
@@ -42,7 +42,7 @@ echo $instance3Url > var/url.instance3
 echo "Prod Server 2 ($instanceId3) at $instance3Url"
 
 echo "Adding Dev to authorized keys"
-echo $myPubKey | ssh -i $keyFile -o StrictHostKeyChecking=no ubuntu@$instance3Url 'cat >> ~/.ssh/authorized_keys'
+cat $myPubKey | ssh -i $keyFile -o StrictHostKeyChecking=no ubuntu@$instance3Url 'cat >> ~/.ssh/authorized_keys'
 
 echo "Adding Jenkins to authorized keys"
 echo $sshJenkins | ssh -i $keyFile -o StrictHostKeyChecking=no ubuntu@$instance3Url 'cat >> ~/.ssh/authorized_keys'
@@ -70,6 +70,7 @@ aws ec2 modify-instance-attribute --instance-id $instanceId3 --disable-api-termi
 echo "Termination is disabled"
 
 echo "Sending variables..."
+scp -i $keyFile -o StrictHostKeyChecking=no var/* ubuntu@$instance1Url:var/.
 scp -i $keyFile -o StrictHostKeyChecking=no var/* ubuntu@$instance2Url:var/.
 scp -i $keyFile -o StrictHostKeyChecking=no var/* ubuntu@$instance3Url:var/.
 

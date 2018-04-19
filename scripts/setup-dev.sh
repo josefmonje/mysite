@@ -14,7 +14,7 @@ echo $instance1Url > var/url.instance1
 echo "Dev Server ($instanceId1) at $instance1Url"
 
 echo "Adding Me to authorized keys"
-echo $myPubKey | ssh -i $keyFile -o StrictHostKeyChecking=no ubuntu@$instance1Url 'cat >> ~/.ssh/authorized_keys'
+cat $myPubKey | ssh -i $keyFile -o StrictHostKeyChecking=no ubuntu@$instance1Url 'cat >> ~/.ssh/authorized_keys'
 
 echo "Generating Dev ssh key"
 ssh -i $keyFile -o StrictHostKeyChecking=no ubuntu@$instance1Url '
@@ -69,4 +69,6 @@ scp -i $keyFile -o StrictHostKeyChecking=no var/* ubuntu@$instance1Url:var/.
 jenkinsPassword=`ssh -i $keyFile ubuntu@$instance1Url 'sudo cat /var/lib/jenkins/secrets/initialAdminPassword'`
 echo $jenkinsPassword > var/password.jenkins
 echo "Done!"
-echo "Please setup Jenkins! Your Jenkins password is $jenkinsPassword"
+echo "Please setup Jenkins!"
+echo "Visit: $instance1Url:8080"
+echo "Your Jenkins password is $jenkinsPassword"
