@@ -79,4 +79,5 @@ scp -i $keyFile -o StrictHostKeyChecking=no .env ubuntu@$instance3Url:var/.
 
 echo "Done!"
 echo "You can now test Jenkins deployment after setting up the github webhook!"
+echo "You can also setup the alarms now."
 echo "IP addresses are: $prod1Ip and $prod2Ip"
