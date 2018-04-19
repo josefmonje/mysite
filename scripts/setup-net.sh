@@ -23,14 +23,14 @@ routeTableId=`aws ec2 create-route-table --vpc-id $vpcId --query 'RouteTable.Rou
 echo $routeTableId > var/id.routetable
 echo "Route Table ID is $routeTableId"
 
-aws ec2 create-route --route-table-id $routeTableId --destination-cidr-block 0.0.0.0/0 --gateway-id $internetGatewayId
-aws ec2 associate-route-table --route-table-id $routeTableId --subnet-id $subnetId
+_=`aws ec2 create-route --route-table-id $routeTableId --destination-cidr-block 0.0.0.0/0 --gateway-id $internetGatewayId`
+_=`aws ec2 associate-route-table --route-table-id $routeTableId --subnet-id $subnetId`
 
+myIp=`curl http://ipinfo.io/ip`
 echo $myIp > var/ip.me
 echo "Your IP is $myIp"
 
 securityGroupId1=`aws ec2 create-security-group --group-name Dev-group --description "Dev Server" --vpc-id $vpcId --query 'GroupId' --output text`
-myIp=`curl http://ipinfo.io/ip`
 echo $securityGroupId1 > var/id.securitygroup1
 echo "Security Group 1 ID is $securityGroupId1"
 aws ec2 authorize-security-group-ingress --group-id $securityGroupId1 --protocol tcp --port 22 --cidr 0.0.0.0/0
