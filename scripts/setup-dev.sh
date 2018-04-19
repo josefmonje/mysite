@@ -51,7 +51,7 @@ ssh -i $keyFile -o StrictHostKeyChecking=no ubuntu@$instance1Url '
 echo "Jenkins ssh key generated"
 
 echo "Sending AWS credentials"
-scp -i $keyFile -o StrictHostKeyChecking=no ~/.aws/credentials ubuntu@$instance1Url:~/.aws
+scp -i $keyFile -o StrictHostKeyChecking=no ~/.aws/* ubuntu@$instance1Url:~/.aws/.
 echo "Assigning aws creds to Jenkins"
 ssh -i $keyFile ubuntu@$instance1Url '
   sudo chown jenkins:jenkins -R ~/.aws; \
