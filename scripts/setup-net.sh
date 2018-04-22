@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Resetting variables"
+echo "Reset variables"
 rm -rf var; mkdir var
 
 echo "Creating network..."
