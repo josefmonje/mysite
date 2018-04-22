@@ -18,7 +18,7 @@ instance1Url=`cat var/url.instance1`
 
 # Prod
 amiId=ami-52d4802e
-keyName=test-key-pair
+keyPairName=test-key-pair
 keyFile=~/.ssh/test-key.pem
 sshJenkins=`cat var/ssh-key.jenkins`
 
