@@ -7,6 +7,7 @@ echo "Tearing down..."
 
 echo "Deleting Internet Gateway"
 aws ec2 detach-internet-gateway --internet-gateway-id $internetGatewayId --vpc-id $vpcId
+sleep 10
 aws ec2 delete-internet-gateway --internet-gateway-id $internetGatewayId
 
 echo "Deleting Load Balancer"
