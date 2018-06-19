@@ -31,26 +31,28 @@ git clone https://github.com/josefmonje/mysite.git /tmp/mysite
 sudo chown ubuntu:ubuntu -R /tmp/mysite/*
 cp -r /tmp/mysite/* /home/ubuntu
 
-# Install cron for monitoring scripts
-sudo -u ubuntu crontab /home/ubuntu/configs/cron-disk-80
+cd /home/ubuntu && scripts/setup-env.sh
+cd /home/ubuntu && scripts/setup-app.sh
 
-# Install symlinks
-sudo ln -s /home/ubuntu/configs/supervisor.conf /etc/supervisor/conf.d/
-sudo ln -s /home/ubuntu/configs/nginx.conf /etc/nginx/sites-available/
-sudo ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/
+# # Install cron for monitoring scripts
+# sudo -u ubuntu crontab /home/ubuntu/configs/cron-disk-80
 
-# Remove nginx defaults
-sudo rm /etc/nginx/sites-available/default
-sudo rm /etc/nginx/sites-enabled/default
-sudo rm /etc/nginx/sites-available/default
+# # Install symlinks
+# sudo ln -s /home/ubuntu/configs/supervisor.conf /etc/supervisor/conf.d/
+# sudo ln -s /home/ubuntu/configs/nginx.conf /etc/nginx/sites-available/
+# sudo ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/
 
-sudo service nginx restart
-sudo service supervisor restart
+# # Remove nginx defaults
+# sudo rm /etc/nginx/sites-available/default
+# sudo rm /etc/nginx/sites-enabled/default
+# sudo rm /etc/nginx/sites-available/default
 
-# Pipenv install
-cd /home/ubuntu && sudo -u ubuntu pipenv install --three
-cd /home/ubuntu && sudo -u ubuntu pipenv run ./manage.py collectstatic --noinput
+# sudo service nginx restart
+# sudo service supervisor restart
 
-sudo supervisorctl stop mysite
-cd /home/ubuntu && sudo -u ubuntu pipenv run ./manage.py migrate
-sudo supervisorctl start mysite
+# # Pipenv install
+# cd /home/ubuntu && sudo -u ubuntu pipenv install --three && sudo -u ubuntu pipenv run ./manage.py collectstatic --noinput
+
+# sudo supervisorctl stop mysite
+# cd /home/ubuntu && sudo -u ubuntu pipenv run ./manage.py migrate
+# sudo supervisorctl start mysite
