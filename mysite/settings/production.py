@@ -40,9 +40,12 @@ try:
 except URLError:
     pass
 
-with open('/home/ubuntu/var/url.loadbalancer') as file:
-    loadbalancer = file.read().strip()
-    ALLOWED_HOSTS.append(loadbalancer)
+try:
+    with open('/home/ubuntu/var/url.loadbalancer') as file:
+        loadbalancer = file.read().strip()
+        ALLOWED_HOSTS.append(loadbalancer)
+except FileNotFoundError:
+    pass
 
 try:
     from .local import *
