@@ -33,12 +33,12 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
 ]
 
- try:
-     ipv4_api = 'http://instance-data/latest/meta-data/public-ipv4'
-     HOST_IP = urlopen(ipv4_api).read().decode()
-     ALLOWED_HOSTS.append(HOST_IP)
- except URLError:
-     pass
+try:
+    ipv4_api = 'http://instance-data/latest/meta-data/public-ipv4'
+    HOST_IP = urlopen(ipv4_api).read().decode()
+    ALLOWED_HOSTS.append(HOST_IP)
+except URLError:
+    pass
 
 with open('/home/ubuntu/var/url.loadbalancer') as file:
     loadbalancer = file.read().strip()
