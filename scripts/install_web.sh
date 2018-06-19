@@ -45,7 +45,6 @@ cd /home/ubuntu && scripts/setup-app.sh
 # # Remove nginx defaults
 # sudo rm /etc/nginx/sites-available/default
 # sudo rm /etc/nginx/sites-enabled/default
-# sudo rm /etc/nginx/sites-available/default
 
 # sudo service nginx restart
 # sudo service supervisor restart
