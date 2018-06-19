@@ -29,7 +29,7 @@ mv aws-scripts-mon /home/ubuntu
 # Clone repo
 git clone https://github.com/josefmonje/mysite.git /tmp/mysite
 sudo chown ubuntu:ubuntu -R /tmp/mysite/*
-cp -r /tmp/mysite/* /home/ubuntu/.
+cp -r /tmp/mysite/* /home/ubuntu
 
 # Install cron for monitoring scripts
 sudo -u ubuntu crontab /home/ubuntu/configs/cron-disk-80
